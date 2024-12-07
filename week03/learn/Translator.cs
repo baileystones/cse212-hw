@@ -3,7 +3,7 @@ public class Translator
     public static void Run()
     {
         var englishToGerman = new Translator();
-        englishToGerman.AddWord("House", "Haus");
+        englishToGerman.AddWo rd("House", "Haus");
         englishToGerman.AddWord("Car", "Auto");
         englishToGerman.AddWord("Plane", "Flugzeug");
         Console.WriteLine(englishToGerman.Translate("Car")); // Auto
@@ -24,7 +24,13 @@ public class Translator
     /// <returns>fixed array of divisors</returns>
     public void AddWord(string fromWord, string toWord)
     {
-        // ADD YOUR CODE HERE
+        if (!_words.ContainsKey(fromWord))
+        {
+            _words.Add(fromWord, toWord);
+        }
+        else{
+            _words[fromWord] = toWord;
+        }
     }
 
     /// <summary>
@@ -34,7 +40,6 @@ public class Translator
     /// <returns>The translated word or "???" if no translation is available</returns>
     public string Translate(string fromWord)
     {
-        // ADD YOUR CODE HERE
-        return "";
+        return _words.ContainsKey(fromWord) ? _words[fromWord] : "???";
     }
 }
